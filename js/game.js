@@ -1,8 +1,15 @@
 const grid = document.querySelector('.grid')
 const spanPlayer = document.querySelector('.player')
-const timer = document.querySelector('.timer')
+const timerData = document.querySelector('.timer')
+
 let firstCard = ''
 let secondCard = ''
+let hour = 0
+let minute = 0
+let second = 0
+let millisecond = 0
+
+let cron
 
 const characters = [
   'aragorn',
@@ -28,9 +35,7 @@ const checkEndGame = () => {
 
   if (disabledCards.length === 20) {
     clearInterval(this.loop)
-    alert(
-      `Parabéns, você conseguiu! Seu tempo foi: ${timer.innerHTML} segundos`
-    )
+    alert('Parabéns, você conseguiu!')
   }
 }
 
@@ -99,9 +104,31 @@ const loadGame = () => {
 
 const startTimer = () => {
   this.loop = setInterval(() => {
-    const currentTimer = +timer.innerHTML
-    timer.innerHTML = currentTimer + 1
-  }, 1000)
+    timer()
+  }, 10)
+}
+
+const timer = () => {
+  if ((millisecond += 10) == 1000) {
+    millisecond = 0
+    second++
+  }
+  if (second == 60) {
+    second = 0
+    minute++
+  }
+  if (minute == 60) {
+    minute = 0
+    hour++
+  }
+  document.getElementById('hour').innerText = returnData(hour)
+  document.getElementById('minute').innerText = returnData(minute)
+  document.getElementById('second').innerText = returnData(second)
+  //document.getElementById('millisecond').innerText = returnData(millisecond)
+}
+
+function returnData(input) {
+  return input > 10 ? input : `0${input}`
 }
 
 window.onload = () => {
