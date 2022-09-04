@@ -1,6 +1,6 @@
 <h1 align="center">
     <img alt="GIF" src="./images/icon.png" width="16">
-    <a href="#" target="_blank">Jogo da Memória - LOTR</a>
+    <a href="https://paulomvrech.github.io/memory-game-lotr/" target="_blank">Jogo da Memória - LOTR</a>
     <img alt="GIF" src="./images/icon.png" width="16">  
 </h1>
 
